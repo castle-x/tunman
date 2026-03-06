@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"strings"
 	"time"
 
 	"github.com/yourusername/tunman/internal/model"
@@ -204,7 +205,20 @@ func (s *Storage) ReadLogs(id string, lines int) (string, error) {
 		return "", err
 	}
 
-	content := string(data)
-	// TODO: 实现按行截断
-	return content, nil
+	content := strings.ReplaceAll(string(data), "\r\n", "\n")
+	if lines <= 0 {
+		return content, nil
+	}
+
+	trimmed := strings.TrimRight(content, "\n")
+	if trimmed == "" {
+		return "", nil
+	}
+
+	parts := strings.Split(trimmed, "\n")
+	if lines < len(parts) {
+		parts = parts[len(parts)-lines:]
+	}
+
+	return strings.Join(parts, "\n") + "\n", nil
 }

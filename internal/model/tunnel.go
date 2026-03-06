@@ -3,6 +3,7 @@ package model
 import (
 	"crypto/rand"
 	"fmt"
+	"strings"
 )
 
 // Category 隧道分类
@@ -27,6 +28,10 @@ func (c Category) Icon() string {
 	}
 }
 
+func (c Category) String() string {
+	return string(c)
+}
+
 func (c Category) DisplayName() string {
 	switch c {
 	case CategoryCustom:
@@ -40,6 +45,19 @@ func (c Category) DisplayName() string {
 	}
 }
 
+func ParseCategory(value string) (Category, error) {
+	switch strings.ToLower(strings.TrimSpace(value)) {
+	case "custom":
+		return CategoryCustom, nil
+	case "testing", "test":
+		return CategoryTesting, nil
+	case "ephemeral", "quick", "temp":
+		return CategoryEphemeral, nil
+	default:
+		return "", fmt.Errorf("unknown category: %s", value)
+	}
+}
+
 // Status 运行状态
 type Status string
 
@@ -48,6 +66,10 @@ const (
 	StatusRunning Status = "running"
 	StatusError   Status = "error"
 )
+
+func (s Status) String() string {
+	return string(s)
+}
 
 func (s Status) Icon() string {
 	switch s {
@@ -59,6 +81,19 @@ func (s Status) Icon() string {
 		return "✗"
 	default:
 		return "?"
+	}
+}
+
+func ParseStatus(value string) (Status, error) {
+	switch strings.ToLower(strings.TrimSpace(value)) {
+	case "running", "run":
+		return StatusRunning, nil
+	case "stopped", "stop":
+		return StatusStopped, nil
+	case "error", "err":
+		return StatusError, nil
+	default:
+		return "", fmt.Errorf("unknown status: %s", value)
 	}
 }
 

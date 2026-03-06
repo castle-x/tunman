@@ -34,13 +34,24 @@ tunman
 
 ### 2.2 CLI 模式
 
-当前 CLI 还在完善中，已明确可用的是：
+当前 CLI 已可直接完成常见管理动作，例如：
 
 ```bash
-tunman version
+tunman help
+tunman list --category custom
+tunman status <id>
+tunman start <id>
+tunman stop <id>
+tunman restart <id>
+tunman logs <id> --lines 200
+tunman create testing --domain example.com --port 3000
+tunman create ephemeral --port 3000 --desc api
+tunman temp 8080 --desc debug
+tunman edit <id>
+tunman delete --yes <id>
 ```
 
-`list`、`start`、`stop`、`status` 入口已经存在，但目前仍以 TUI 使用为主。
+当前支持的命令包括：`list`、`status`、`start`、`stop`、`restart`、`logs`、`create`、`temp`、`edit`、`delete`、`version`、`help`。
 
 ## 3. 页面说明
 

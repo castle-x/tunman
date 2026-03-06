@@ -6,7 +6,7 @@
 
 TunMan 用来集中管理本地 Cloudflare Tunnel 配置、运行状态和日志，适合经常在终端里启动、停止、查看和清理隧道的场景。
 
-当前项目以 TUI 体验为主；CLI 子命令仍在逐步补全。
+当前项目以 TUI 体验为主；CLI 也已覆盖常见管理流程。
 
 ## 当前能力
 
@@ -44,10 +44,21 @@ tunman
 ### CLI 模式
 
 ```bash
-tunman version
+tunman help
+tunman list --category custom
+tunman status <id>
+tunman start <id>
+tunman stop <id>
+tunman restart <id>
+tunman logs <id> --lines 200
+tunman create custom --domain example.com --prefix api --port 3000
+tunman create ephemeral --port 3000 --desc api
+tunman temp 8080 --desc debug
+tunman edit <id>
+tunman delete --yes <id>
 ```
 
-说明：当前 CLI 框架已存在，但 `list`、`status`、`start`、`stop` 仍在完善中；日常管理建议优先使用 TUI。
+当前 CLI 已支持常见管理操作：`list`、`status`、`start`、`stop`、`restart`、`logs`、`create`、`temp`、`edit`、`delete`、`version`、`help`。
 
 ## 常用快捷键
 
@@ -115,5 +126,5 @@ tunman version
 ## 当前状态
 
 - TUI 主流程已可用
-- CLI 仍是补全中的能力
+- CLI 常见管理流程已可直接使用
 - 项目仍在迭代，文档已按当前实现收口整理
