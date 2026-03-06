@@ -107,12 +107,13 @@ tunman version
 
 ## 文档
 
-- `docs/PREREQUISITES.md`：Cloudflare / `cloudflared` / 域名准备
-- `docs/USAGE.md`：详细操作说明
+- `docs/PREREQUISITES.md`：使用前置准备
+- `docs/USAGE.md`：TunMan 使用教程
 - `docs/PRD.md`：产品与交互设计说明
+- `docs/plan/`：开发过程中的计划与设计记录
 
 ## 当前状态
 
 - TUI 主流程已可用
 - CLI 仍是补全中的能力
-- 项目仍在迭代，文档已按当前实现同步
+- 项目仍在迭代，文档已按当前实现收口整理
