@@ -1,0 +1,33 @@
+# Build artifacts
+tunman
+bin/
+dist/
+
+# Go
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+coverage.out
+
+# Environment files
+.env
+.env.local
+
+# Editor and IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Local AI/editor metadata
+.codex/
+.cursor/
+.claude/
