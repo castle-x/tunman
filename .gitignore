@@ -1,5 +1,5 @@
 # Build artifacts
-tunman
+/tunman
 bin/
 dist/
 
@@ -16,12 +16,22 @@ coverage.out
 # Environment files
 .env
 .env.local
+.env.*
+*.local
 
 # Editor and IDE
 .idea/
 .vscode/
 *.swp
 *.swo
+
+# Local caches and temp files
+.cache/
+.tmp/
+tmp/
+*.tmp
+*.log
+*.pid
 
 # OS files
 .DS_Store
@@ -31,3 +41,13 @@ Thumbs.db
 .codex/
 .cursor/
 .claude/
+
+# Credentials and certificates
+*.pem
+*.key
+*.p12
+*.crt
+*.cer
+*.der
+*.secret
+secrets/
